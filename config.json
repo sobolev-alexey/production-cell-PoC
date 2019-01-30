@@ -1,0 +1,28 @@
+{
+  "testMode": true,
+  "mq": {
+    "queue": "DEV.QUEUE.DATA.CELL",
+    "paymentQueue": "DEV.QUEUE.PAYMENTS.CELL",
+    "qMgr": "QM1",
+    "apiBase": "/ibmmq/rest/v1/"
+  },
+  "messageRobot": {
+    "ENERGY": {
+      "RobotName": "ROBOT_RB_100",
+      "Act_Power": "235.78",
+      "Energy_Measuring": {
+        "ENERGY_MEASURING_STRUC": {
+          "ACTIVE": "FALSE",
+          "TIME": "56.1880035",
+          "ENERGY": "0.0198"
+        }
+      },
+      "TimeStamp": "1524815472869",
+      "TimeStamp2": "2018-10-27T07\\:51\\:12.6695664+02:00"
+    }
+  },
+  "costkWh": 0.15,
+  "defaultTokenPrice": 0.3,
+  "provider": "https://nodes.devnet.iota.org",
+  "priceURL": "https://api.thetangle.org/v1/market/prices"
+}

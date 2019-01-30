@@ -1,0 +1,27 @@
+{
+  "name": "Production_cell_PoC",
+  "version": "1.0.1",
+  "description": "PoC for industry production cell",
+  "private": true,
+  "author": {
+    "name": "Alexey Sobolev",
+    "website": "https://iota.org"
+  },
+  "contributors": [
+    {
+      "name": "Alexey Sobolev"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sobolev-alexey/production-cell-poc.git"
+  },
+  "dependencies": {
+    "@iota/core": "^1.0.0-beta.5",
+    "date-fns": "^1.29.0",
+    "pg": "^7.6.0"
+  },
+  "engines": {
+    "node": ">=8.0"
+  }
+}

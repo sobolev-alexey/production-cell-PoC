@@ -1,0 +1,365 @@
+-- LOCAL GRID 1
+
+CREATE TABLE public.localgrid_1
+(
+    energy numeric NOT NULL,
+    "timestamp" timestamp(6) without time zone NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.localgrid_1
+    OWNER to postgres;
+
+-- Index: localgrid_1_idx
+
+CREATE INDEX localgrid_1_idx
+    ON public.localgrid_1 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+
+
+-- LOCAL GRID 2
+
+CREATE TABLE public.localgrid_2
+(
+    energy numeric NOT NULL,
+    "timestamp" timestamp(6) without time zone NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.localgrid_2
+    OWNER to postgres;
+
+-- Index: localgrid_2_idx
+
+CREATE INDEX localgrid_2_idx
+    ON public.localgrid_2 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+
+
+-- BATTERY 1
+
+CREATE TABLE public.battery_1
+(
+    load numeric NOT NULL,
+    "timestamp" timestamp(6) without time zone NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.battery_1
+    OWNER to postgres;
+
+-- Index: battery_1_idx
+
+CREATE INDEX battery_1_idx
+    ON public.battery_1 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+
+
+-- BATTERY 2
+
+CREATE TABLE public.battery_2
+(
+    load numeric NOT NULL,
+    "timestamp" timestamp(6) without time zone NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.battery_2
+    OWNER to postgres;
+
+-- Index: battery_2_idx
+
+CREATE INDEX battery_2_idx
+    ON public.battery_2 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+
+
+-- ENERGY 1
+
+CREATE TABLE public.energy_1
+(
+    voltage double precision NOT NULL,
+    publicgrid double precision NOT NULL,
+    battery double precision NOT NULL,
+    solar double precision NOT NULL,
+    "timestamp" timestamp(6) without time zone NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.energy_1
+    OWNER to postgres;
+
+-- Index: energy_1_idx
+
+CREATE INDEX energy_1_idx
+    ON public.energy_1 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+-- ENERGY 2
+
+CREATE TABLE public.energy_2
+(
+    voltage double precision NOT NULL,
+    publicgrid double precision NOT NULL,
+    battery double precision NOT NULL,
+    solar double precision NOT NULL,
+    "timestamp" timestamp(6) without time zone NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.energy_2
+    OWNER to postgres;
+
+-- Index: energy_2_idx
+
+CREATE INDEX energy_2_idx
+    ON public.energy_2 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+
+
+
+-- PAYMENTS 1
+
+CREATE TABLE public.payments_1
+(
+    sender character varying(15) COLLATE pg_catalog."default" DEFAULT ''::character varying,
+    receiver character varying(15) COLLATE pg_catalog."default" DEFAULT ''::character varying,
+    transferred_amount integer DEFAULT 0,
+    sender_wallet_balance integer DEFAULT 0,
+    receiver_wallet_balance integer DEFAULT 0,
+    "status" character varying(100) COLLATE pg_catalog."default" DEFAULT ''::character varying,
+    start_timestamp timestamp without time zone,
+    "timestamp" timestamp without time zone
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.payments_1
+    OWNER to postgres;
+
+-- Index: payments_1_idx
+
+CREATE INDEX payments_1_idx
+    ON public.payments_1 USING btree
+    ("timestamp", sender COLLATE pg_catalog."default", receiver COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+
+CREATE INDEX payments_1_start_timestamp_idx
+    ON public.payments_1 USING btree
+    (start_timestamp, sender COLLATE pg_catalog."default", receiver COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+
+
+-- PAYMENTS 2
+
+CREATE TABLE public.payments_2
+(
+    sender character varying(15) COLLATE pg_catalog."default" DEFAULT ''::character varying,
+    receiver character varying(15) COLLATE pg_catalog."default" DEFAULT ''::character varying,
+    transferred_amount integer DEFAULT 0,
+    sender_wallet_balance integer DEFAULT 0,
+    receiver_wallet_balance integer DEFAULT 0,
+    "status" character varying(100) COLLATE pg_catalog."default" DEFAULT ''::character varying,
+    start_timestamp timestamp without time zone,
+    "timestamp" timestamp without time zone
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.payments_2
+    OWNER to postgres;
+
+-- Index: payments_2_idx
+
+CREATE INDEX payments_2_idx
+    ON public.payments_2 USING btree
+    ("timestamp", sender COLLATE pg_catalog."default", receiver COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+
+CREATE INDEX payments_2_start_timestamp_idx
+    ON public.payments_2 USING btree
+    (start_timestamp, sender COLLATE pg_catalog."default", receiver COLLATE pg_catalog."default")
+    TABLESPACE pg_default;
+
+
+-- ROBOT 1
+
+CREATE TABLE public.robot_1
+(
+    "timestamp" timestamp(6) without time zone NOT NULL,
+    power double precision NOT NULL,
+    energy double precision NOT NULL,
+    "time" double precision NOT NULL,
+    timestamp1 bigint NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.robot_1
+    OWNER to postgres;
+
+-- Index: robot_1_idx
+
+CREATE INDEX robot_1_idx
+    ON public.robot_1 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+
+
+-- ROBOT 2
+
+CREATE TABLE public.robot_2
+(
+    "timestamp" timestamp(6) without time zone NOT NULL,
+    power double precision NOT NULL,
+    energy double precision NOT NULL,
+    "time" double precision NOT NULL,
+    timestamp1 bigint NOT NULL
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.robot_2
+    OWNER to postgres;
+
+-- Index: robot_2_idx
+
+CREATE INDEX robot_2_idx
+    ON public.robot_2 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+
+-- WALLETS 1
+
+CREATE TABLE public.wallets_1
+(
+    "timestamp" timestamp(6) without time zone NOT NULL,
+    keyindex numeric NOT NULL DEFAULT 0,
+    balance numeric NOT NULL DEFAULT 1000000,
+    address VARCHAR(90) NOT NULL DEFAULT '',
+    owner VARCHAR(15) NOT NULL DEFAULT ''
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.wallets_1
+    OWNER to postgres;
+
+-- Index: wallets_1_idx
+
+CREATE INDEX wallets_1_idx
+    ON public.wallets_1 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+-- WALLETS 2
+
+CREATE TABLE public.wallets_2
+(
+    "timestamp" timestamp(6) without time zone NOT NULL,
+    keyindex numeric NOT NULL DEFAULT 0,
+    balance numeric NOT NULL DEFAULT 1000000,
+    address VARCHAR(90) NOT NULL DEFAULT '',
+    owner VARCHAR(15) NOT NULL DEFAULT ''
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.wallets_2
+    OWNER to postgres;
+
+-- Index: wallets_2_idx
+
+CREATE INDEX wallets_2_idx
+    ON public.wallets_2 USING btree
+    ("timestamp")
+    TABLESPACE pg_default;
+
+
+-- SEEDS
+
+CREATE TABLE public.seeds
+(
+    owner VARCHAR(15) NOT NULL DEFAULT '',
+    seed VARCHAR(82) NOT NULL DEFAULT '',
+    keyindex numeric NOT NULL DEFAULT 0,
+    "timestamp" timestamp(6) without time zone
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.seeds
+    OWNER to postgres;
+
+
+
+INSERT INTO seeds(owner, seed, keyindex)
+VALUES
+  ('robot', '', 0),
+  ('battery', '', 0),
+  ('solar', '', 0),
+  ('publicGrid', '', 0),
+  ('localGrid', '', 0),
+
+
+INSERT INTO wallets(timestamp, keyindex, balance, owner, address)
+VALUES
+  ('2018-12-02 00:00:01.006', 0, 10000000, 'robot', ''),
+  ('2018-12-02 00:00:01.007', 0, 1000000, 'battery', ''),
+  ('2018-12-02 00:00:01.008', 0, 1000000, 'solar', ''),
+  ('2018-12-02 00:00:01.009', 0, 1000000, 'publicGrid', ''),
+  ('2018-12-02 00:00:01.010', 0, 1000000, 'localGrid', '');
